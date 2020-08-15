@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="pageTitle">学習タイプ（詳細）</h1>
+
+<table class="detailTable">
+    <tr>
+        <th class="width20">タイプ名</th>
+        <td class="width80"><%= @study_type.type_name %></td>
+    </tr>
+    <tr>
+        <th class="width20">備考</th>
+        <td class="width80"><%= @study_type.remark %></td>
+    </tr>
+</table>
+
+<%= link_to '一覧に戻る', study_types_path, { class: "btn btn-primary" } %>

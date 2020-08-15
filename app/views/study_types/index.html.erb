@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="pageTitle">学習タイプ（一覧）</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>タイプ名</th>
+      <th>備考</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @study_types.each do |study_type| %>
+      <tr>
+        <td><%= study_type.type_name %></td>
+        <td><%= study_type.remark %></td>
+        <td>
+          <%= link_to '詳細', study_type, { class: "btn btn-primary" } %>
+          <%= link_to '編集', study_types_path(id: study_type.id), { class: "btn btn-success" } %>
+          <%= link_to '削除', study_type, method: :delete, data: { confirm: '削除しても大丈夫ですか?' }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr class="fluid-box formLine">
+
+<div class="formBox">
+  <h3 class="formTitle">
+    <%= @study_type.id == nil ? "新規登録フォーム" : "更新フォーム" %>
+  </h3>
+
+  <%= render 'form', study_type: @study_type %>
+</div>

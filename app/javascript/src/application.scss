@@ -1,0 +1,72 @@
+@import '~bootstrap/scss/bootstrap';
+
+
+/* 画面いっぱいに表示させる */
+.fluid-box{
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/**/
+
+.pageTitle {
+  margin-bottom: 30px;
+}
+
+.formLine {
+  margin-top: 50px;
+  border-top: 2px solid #8c8b8b;
+}
+
+.formBox {
+  padding: 0.5em 1em;
+  margin: 2em 10em;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.formTitle {
+  margin-bottom: 25px;
+}
+
+.center {
+  text-align: center;
+}
+
+/* 詳細ページのテーブル設定 */
+.detailTable {
+  table-layout: fixed;
+  width: 100%;
+  margin-bottom: 40px;
+}
+  
+.detailTable th,
+.detailTable td {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+  
+.detailTable th {
+  font-weight: bold;
+  background-color: #dedede; 
+}
+
+.detailTable th.width20 {
+  width: 20%;
+}
+
+.detailTable th.width80 {
+  width: 70%;
+}
+  
+@media screen and (max-width: 767px) {
+  .detailTable,
+  .detailTable tr,
+  .detailTable td,
+  .detailTable th {display:block;}
+  .detailTable th {width:auto;}
+}
+/**/
