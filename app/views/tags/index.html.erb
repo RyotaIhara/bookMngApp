@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="pageTitle">タグ（一覧）</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>タグ名</th>
+      <th>備考</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.tag_name %></td>
+        <td><%= tag.remark %></td>
+        <td>
+          <%= link_to '詳細', tag, { class: "btn btn-primary" } %>
+          <%= link_to '編集', tags_path(id: tag.id), { class: "btn btn-success" } %>
+          <%= link_to '削除', tag, method: :delete, data: { confirm: '削除しても大丈夫ですか?' }, class: "btn btn-danger"  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr class="fluid-box formLine">
+
+<div class="formBox">
+  <h3 class="formTitle">
+    <%= @tag.id == nil ? "新規登録フォーム" : "更新フォーム" %>
+  </h3>
+
+  <%= render 'form', tag: @tag %>
+</div>

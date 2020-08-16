@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="pageTitle">タグ（詳細）</h1>
+
+<table class="detailTable">
+    <tr>
+        <th class="width20">タグ名</th>
+        <td class="width80"><%= @tag.tag_name %></td>
+    </tr>
+    <tr>
+        <th class="width20">備考</th>
+        <td class="width80"><%= @tag.remark %></td>
+    </tr>
+</table>
+
+<%= link_to '一覧に戻る', tags_path, { class: "btn btn-primary" } %>
