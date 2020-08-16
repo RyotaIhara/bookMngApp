@@ -1,0 +1,31 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'sessions' %>
+<% end %>
+
+<div class="form-body">
+
+  <div class="form-wrapper">
+    <h1>Sign In</h1>
+    <%= form_with(model: @user, local: true) do |form| %>
+          <div class="form-item">
+            <label for="ユーザー名"></label>
+            <%# <input type="email" name="email" required="required" placeholder="Email Address"></input> %>
+            <%= form.text_field :user_name, :placeholder => "ユーザー名" %>
+          </div>
+          <div class="form-item">
+            <label for="パスワード"></label>
+            <%# <input type="password" name="password" required="required" placeholder="Password"></input> %>
+            <%= form.password_field :password, :placeholder => "パスワード" %>
+          </div>
+          <div class="button-panel">
+            <%# <input type="submit" class="button" title="Sign In" value="Sign In"></input> %>
+            <%= form.submit("ログイン", class: 'button') %>
+          </div>
+    <% end %>
+    <div class="form-footer">
+      <p><%= link_to 'Sign Up', new_user_path %></p>
+      <p><a href="#">Forgot password?</a></p>
+    </div>
+  </div>
+
+</div>

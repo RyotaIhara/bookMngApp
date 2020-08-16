@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_003459) do
+ActiveRecord::Schema.define(version: 2020_08_16_005644) do
 
   create_table "study_types", force: :cascade do |t|
     t.string "type_name", null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2020_08_16_003459) do
   create_table "tags", force: :cascade do |t|
     t.string "tag_name", null: false
     t.string "remark"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "user_name", null: false
+    t.string "password_digest", null: false
+    t.string "remember_token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
