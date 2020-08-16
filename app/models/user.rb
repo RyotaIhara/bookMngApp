@@ -11,7 +11,9 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-	has_secure_password
+  has_secure_password
+  
+  has_many :study_books
 
 	def self.new_remember_token
     SecureRandom.urlsafe_base64

@@ -10,4 +10,5 @@
 #  updated_at :datetime         not null
 #
 class StudyType < ApplicationRecord
+  has_many :study_books
 end

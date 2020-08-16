@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<table class="detailTable">
+    <tr>
+        <th class="width20">書籍名</th>
+        <td class="width80"><%= @study_book.book_name %></td>
+    </tr>
+    <tr>
+        <th class="width20">タイプ名</th>
+        <td class="width80"><%= @study_book.study_type.type_name %></td>
+    </tr>
+    <tr>
+        <th class="width20">作者</th>
+        <td class="width80"><%= @study_book.author %></td>
+    </tr>
+    <tr>
+        <th class="width20">出版社</th>
+        <td class="width80"><%= @study_book.publisher %></td>
+    </tr>
+    <tr>
+        <th class="width20">価格</th>
+        <td class="width80"><%= @study_book.price != nil ? @study_book.price.to_s(:delimited) + "円" : "" %></td>
+    </tr>
+    <tr>
+        <th class="width20">備考</th>
+        <td class="width80"><%= @study_book.remark %></td>
+    </tr>
+</table>
+
+<%= link_to '編集', edit_study_book_path(@study_book), { class: "btn btn-success" } %> 
+<%= link_to '一覧に戻る', study_books_path, { class: "btn btn-primary" } %>

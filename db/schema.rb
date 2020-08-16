@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_005644) do
+ActiveRecord::Schema.define(version: 2020_08_16_010953) do
+
+  create_table "study_books", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "study_type_id"
+    t.string "book_name", null: false
+    t.string "author"
+    t.string "publisher"
+    t.integer "price"
+    t.string "remark"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["study_type_id"], name: "index_study_books_on_study_type_id"
+    t.index ["user_id"], name: "index_study_books_on_user_id"
+  end
 
   create_table "study_types", force: :cascade do |t|
     t.string "type_name", null: false
@@ -37,4 +52,6 @@ ActiveRecord::Schema.define(version: 2020_08_16_005644) do
     t.datetime "deleted_at"
   end
 
+  add_foreign_key "study_books", "study_types"
+  add_foreign_key "study_books", "users"
 end
