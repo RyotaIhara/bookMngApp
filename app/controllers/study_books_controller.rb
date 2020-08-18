@@ -79,6 +79,7 @@ class StudyBooksController < ApplicationController
         :publisher,
         :price,
         :remark,
+        tag_ids: []
       )
     end
 end

@@ -25,6 +25,14 @@
         <th class="width20">備考</th>
         <td class="width80"><%= @study_book.remark %></td>
     </tr>
+    <tr>
+        <th class="width20">タグ</th>
+        <td class="width80">
+            <% @study_book.tags.each do |tag| %>
+                <%= tag.tag_name %>
+            <% end %>
+        </td>
+    </tr>
 </table>
 
 <%= link_to '編集', edit_study_book_path(@study_book), { class: "btn btn-success" } %> 
