@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: study_book_tag_relations
+#
+#  id            :integer          not null, primary key
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  study_book_id :integer
+#  tag_id        :integer
+#
+# Indexes
+#
+#  index_study_book_tag_relations_on_study_book_id  (study_book_id)
+#  index_study_book_tag_relations_on_tag_id         (tag_id)
+#
+# Foreign Keys
+#
+#  study_book_id  (study_book_id => study_books.id)
+#  tag_id         (tag_id => tags.id)
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

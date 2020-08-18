@@ -10,4 +10,6 @@
 #  updated_at :datetime         not null
 #
 class Tag < ApplicationRecord
+  has_many :study_book_tag_relations
+  has_many :study_books, through: :study_book_tag_relations
 end

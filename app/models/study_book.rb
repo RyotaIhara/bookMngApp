@@ -27,4 +27,7 @@
 class StudyBook < ApplicationRecord
   belongs_to :user
   belongs_to :study_type
+
+  has_many :study_book_tag_relations
+  has_many :tags, through: :study_book_tag_relations
 end

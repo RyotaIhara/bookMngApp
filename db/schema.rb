@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_010953) do
+ActiveRecord::Schema.define(version: 2020_08_18_101021) do
+
+  create_table "study_book_tag_relations", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "study_book_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["study_book_id"], name: "index_study_book_tag_relations_on_study_book_id"
+    t.index ["tag_id"], name: "index_study_book_tag_relations_on_tag_id"
+  end
 
   create_table "study_books", force: :cascade do |t|
     t.integer "user_id"
@@ -52,6 +61,8 @@ ActiveRecord::Schema.define(version: 2020_08_16_010953) do
     t.datetime "deleted_at"
   end
 
+  add_foreign_key "study_book_tag_relations", "study_books"
+  add_foreign_key "study_book_tag_relations", "tags"
   add_foreign_key "study_books", "study_types"
   add_foreign_key "study_books", "users"
 end
