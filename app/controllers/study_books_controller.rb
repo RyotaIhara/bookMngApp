@@ -4,7 +4,23 @@ class StudyBooksController < ApplicationController
   # GET /study_books
   # GET /study_books.json
   def index
-    @study_books = StudyBook.where(deleted_at: nil, user_id: @current_user.id)
+    '''
+    @study_books = params[:tag_id].present? 
+      ? Tag.find(params[:tag_id]).study_books.where(deleted_at: nil, user_id: @current_user.id)
+        : StudyBook.where(deleted_at: nil, user_id: @current_user.id)
+    '''
+    #@study_books = StudyBook.where(deleted_at: nil, user_id: @current_user.id)
+
+    if params[:tag_id].present?
+      @@tmp_tudy_books = Tag.find(params[:tag_id]).study_books
+  
+      @study_books = @@tmp_tudy_books.select do |study_book|
+        study_book.deleted_at == nil
+      end
+    else
+      @study_books = StudyBook.where(deleted_at: nil, user_id: @current_user.id)
+    end
+
   end
 
   # GET /study_books/1

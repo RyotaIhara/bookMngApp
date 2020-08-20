@@ -2,6 +2,19 @@
 
 <h1>Study Books</h1>
 
+<div class="text-right">
+  <%= form_tag study_books_path, method: :get, class: 'books_searchForm' do %>
+    <%= select_tag :tag_id,
+                    options_from_collection_for_select(Tag.all, :id, :tag_name, params[:tag_id]),
+                    {
+                      prompt: 'タグで絞り込み',
+                      class: 'form-control books_select',
+                      onchange: 'submit(this.form);'
+                    }
+    %>
+  <% end %>
+</div>
+
 <table class="table">
   <thead>
     <tr>
