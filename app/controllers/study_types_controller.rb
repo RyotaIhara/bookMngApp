@@ -5,7 +5,7 @@ class StudyTypesController < ApplicationController
   # GET /study_types.json
   def index
     #@study_types = StudyType.all
-    @study_types = StudyType.where(deleted_at: nil)
+    @study_types = StudyType.where(deleted_at: nil).page(params[:page]).per(7)
     if params[:id].present?
       set_study_type
     else

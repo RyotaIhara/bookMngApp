@@ -7,16 +7,14 @@ class StudyBooksController < ApplicationController
 
     # tag_idが渡された場合
     if params[:tag_id].present?
-      # 一旦タグに紐づくstudy_booksを取得
-      @@tmp_study_books = Tag.find(params[:tag_id]).study_books
-      # deleted_atとuser_idでフィルターをかける
-      @study_books = @@tmp_study_books.select do |study_book|
-        study_book.deleted_at == nil &&
-          study_book.user_id == @current_user.id
-      end
+      @study_books = Tag.find(params[:tag_id])
+                          .study_books
+                            .where(deleted_at: nil, user_id: @current_user.id)
+                              .page(params[:page]).per(7)
     # tag_idが渡されなかった場合
     else
       @study_books = StudyBook.where(deleted_at: nil, user_id: @current_user.id)
+                                  .page(params[:page]).per(7)
     end
 
   end

@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   # GET /tags.json
   def index
     #@tags = Tag.all
-    @tags = Tag.where(deleted_at: nil)
+    @tags = Tag.where(deleted_at: nil).page(params[:page]).per(7)
     if params[:id].present?
       set_tag
     else
