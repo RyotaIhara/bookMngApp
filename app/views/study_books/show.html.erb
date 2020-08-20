@@ -29,7 +29,9 @@
         <th class="width20">タグ</th>
         <td class="width80">
             <% @study_book.tags.each do |tag| %>
-                <%= tag.tag_name %>
+                <span class="badge badge-primary">
+                    <%= tag.tag_name %>
+                </span>
             <% end %>
         </td>
     </tr>

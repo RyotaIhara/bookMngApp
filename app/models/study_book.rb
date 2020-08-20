@@ -30,4 +30,5 @@ class StudyBook < ApplicationRecord
 
   has_many :study_book_tag_relations
   has_many :tags, through: :study_book_tag_relations
+  accepts_nested_attributes_for :tags, reject_if: :all_blank, allow_destroy: true
 end
