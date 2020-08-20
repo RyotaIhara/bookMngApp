@@ -55,6 +55,7 @@ class TagsController < ApplicationController
     @tag.deleted_at = Date.today.to_time
     respond_to do |format|
       if @tag.save
+        StudyBookTagRelation.where(tag_id: @tag.id).destroy_all
         format.html { redirect_to tags_url, notice: '学習タイプの削除が完了した。' }
         format.json { head :no_content }
       end

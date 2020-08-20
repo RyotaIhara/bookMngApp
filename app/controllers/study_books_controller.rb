@@ -4,19 +4,17 @@ class StudyBooksController < ApplicationController
   # GET /study_books
   # GET /study_books.json
   def index
-    '''
-    @study_books = params[:tag_id].present? 
-      ? Tag.find(params[:tag_id]).study_books.where(deleted_at: nil, user_id: @current_user.id)
-        : StudyBook.where(deleted_at: nil, user_id: @current_user.id)
-    '''
-    #@study_books = StudyBook.where(deleted_at: nil, user_id: @current_user.id)
 
+    # tag_idが渡された場合
     if params[:tag_id].present?
-      @@tmp_tudy_books = Tag.find(params[:tag_id]).study_books
-  
-      @study_books = @@tmp_tudy_books.select do |study_book|
-        study_book.deleted_at == nil
+      # 一旦タグに紐づくstudy_booksを取得
+      @@tmp_study_books = Tag.find(params[:tag_id]).study_books
+      # deleted_atとuser_idでフィルターをかける
+      @study_books = @@tmp_study_books.select do |study_book|
+        study_book.deleted_at == nil &&
+          study_book.user_id == @current_user.id
       end
+    # tag_idが渡されなかった場合
     else
       @study_books = StudyBook.where(deleted_at: nil, user_id: @current_user.id)
     end
