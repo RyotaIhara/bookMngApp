@@ -1,0 +1,30 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'sessions' %>
+<% end %>
+
+<div class="form-wrapper">
+  <h1>ユーザー名確認</h1>
+  <% if @errors.present? %>
+    <div class="alert alert-danger">
+      <ul class="list-unstyled">
+        <% @errors.each do |e| %>
+          <li><%= e %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with( url: user_confirm_name_path, local: true) do |form| %>
+    <!-- ユーザー名確認フラグ -->
+    <div class="form-item">
+      <label for="ユーザー名(確認用)"></label>
+      <%= form.text_field :user_name, :placeholder => 'ユーザー名を入力してください' %>
+    </div>
+    <div class="button-panel">
+      <%= form.submit("パスワードリセット画面へ", class: 'button') %>
+    </div>
+  <% end %>
+  <div class="form-footer">
+    <p><%= link_to 'Sign In', login_path %></p>
+  </div>
+</div>

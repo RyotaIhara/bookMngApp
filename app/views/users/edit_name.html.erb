@@ -3,7 +3,7 @@
 <% end %>
 
 <div class="form-wrapper">
-  <h1>Sign Up</h1>
+  <h1>ユーザー名変更</h1>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -15,24 +15,24 @@
       </ul>
     </div>
   <% end %>
+
   <%= form_with(model: @user, local: true) do |form| %>
+    <!-- 更新対象のカラム -->
+    <%= hidden_field_tag :target_column, 'user_name' %>
+
     <div class="form-item">
-      <label for="ユーザー名"></label>
-      <%= form.text_field :user_name, :placeholder => "ユーザー名" %>
+      <label for="現在のユーザー名">現在のユーザー名</label>
+      <%= form.text_field :current_user_name, :value => @current_user.user_name, disabled: true %>
     </div>
     <div class="form-item">
-      <label for="パスワード"></label>
-      <%= form.password_field :password, :placeholder => "パスワード" %>
-    </div>
-    <div class="form-item">
-      <label for="パスワード確認"></label>
-      <%= form.password_field :password_confirmation, :placeholder => "パスワード確認" %>
+      <label for="新しいユーザー名">新しいユーザー名</label>
+      <%= form.text_field :user_name %>
     </div>
     <div class="button-panel">
-      <%= form.submit("登録", class: 'button') %>
+      <%= form.submit("更新", class: 'button') %>
     </div>
   <% end %>
   <div class="form-footer">
-    <p><%= link_to 'Sign In', login_path %></p>
+    <p><%= link_to 'ホームへ', login_path %></p>
   </div>
 </div>
