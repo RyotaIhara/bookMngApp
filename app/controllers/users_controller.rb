@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_sign_in!, 
-    only: [:new, :create,:confirm_name, :edit_password_from_confirm_name, :edit_password, :update_password]
-  before_action :set_user, only: [:edit_name, :edit_password, :update]
+    only: [:new, :create,:confirm_name, :edit_password_from_confirm_name, :edit_password]
+  before_action :set_user, only: [:edit_name, :edit_password, :update, :destroy]
 
   def new
     @user = User.new
@@ -53,6 +53,14 @@ class UsersController < ApplicationController
       elsif params[:target_column] == 'password'
         render 'edit_password'
       end
+    end
+  end
+
+  def destroy
+    @user.deleted_at = Date.today.to_time
+    if @user.save
+      sign_out
+      redirect_to login_path
     end
   end
 

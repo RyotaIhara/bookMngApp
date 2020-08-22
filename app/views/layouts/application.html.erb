@@ -44,6 +44,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <%= link_to 'ユーザー名変更', "/users/#{@current_user.id}/edit_name", class: "dropdown-item" %>
               <%= link_to 'パスワード変更', "/users/#{@current_user.id}/edit_password", class: "dropdown-item" %>
+              <%= link_to '現在のユーザー削除', @current_user, method: :delete, data: { confirm: '削除しても大丈夫ですか?' }, class: "dropdown-item"  %>
             </div>
           </li>
           <li class="nav-item">

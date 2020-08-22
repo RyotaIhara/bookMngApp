@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
 
   def sign_in(user)
     remember_token = User.new_remember_token
-    cookies.permanent[:user_remember_token] = remember_token
+    #cookies.permanent[:user_remember_token] = remember_token
+    cookies[:user_remember_token] = { value: remember_token, expires: 1.hour }
     user.update!(remember_token: User.encrypt(remember_token))
     @current_user = user
   end
