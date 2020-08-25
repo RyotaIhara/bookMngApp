@@ -16,7 +16,7 @@
         <td><%= tag.tag_name %></td>
         <td>
           <%= link_to '詳細', tag, { class: "btn btn-primary" } %>
-          <%= link_to '編集', tags_path(id: tag.id), { class: "btn btn-success" } %>
+          <%= link_to '編集', edit_tag_path(tag), { class: "btn btn-success" } %>
           <%= link_to '削除', tag, method: :delete, data: { confirm: '削除しても大丈夫ですか?' }, class: "btn btn-danger"  %>
         </td>
       </tr>
@@ -26,12 +26,4 @@
 
 <%= paginate @tags %>
 
-<hr class="fluid-box formLine">
-
-<div class="formBox">
-  <h3 class="formTitle">
-    <%= @tag.id == nil ? "新規登録フォーム" : "更新フォーム" %>
-  </h3>
-
-  <%= render 'form', tag: @tag %>
-</div>
+<%= link_to 'タグ追加', new_tag_path, { class: "btn btn-primary" } %>

@@ -1,21 +1,25 @@
 class StudyTypesController < ApplicationController
-  before_action :set_study_type, only: [:show, :update, :destroy]
+  before_action :set_study_type, only: [:show, :edit, :update, :destroy]
 
   # GET /study_types
   # GET /study_types.json
   def index
     #@study_types = StudyType.all
     @study_types = StudyType.where(deleted_at: nil).page(params[:page]).per(7)
-    if params[:id].present?
-      set_study_type
-    else
-      @study_type = StudyType.new
-    end
   end
 
   # GET /study_types/1
   # GET /study_types/1.json
   def show
+  end
+
+  # GET /study_books/new
+  def new
+    @study_type = StudyType.new
+  end
+
+  # GET /study_books/1/edit
+  def edit
   end
 
   # POST /study_types
@@ -25,7 +29,7 @@ class StudyTypesController < ApplicationController
 
     respond_to do |format|
       if @study_type.save
-        format.html { redirect_to study_types_path, notice: '学習タイプの新規登録が完了した。' }
+        format.html { redirect_to @study_type, notice: '学習タイプの新規登録が完了した。' }
         format.json { render :show, status: :created, location: @study_type }
       else
         format.html { render :new }
@@ -39,8 +43,8 @@ class StudyTypesController < ApplicationController
   def update
     respond_to do |format|
       if @study_type.update(study_type_params)
-        format.html { redirect_to study_types_path, notice: '学習タイプの更新が完了した。' }
-        format.json { render :show, status: :ok, location: @study_type }
+        format.html { redirect_to @study_type, notice: '学習タイプの更新が完了した。' }
+        format.json { render :show, status: :created, location: @study_type }
       else
         format.html { render :edit }
         format.json { render json: @study_type.errors, status: :unprocessable_entity }

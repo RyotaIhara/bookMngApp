@@ -19,6 +19,6 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:new, :create, :update, :destroy]
   resources :study_books
-  resources :study_types, :only => [:index, :show, :create, :update, :destroy]
-  resources :tags, :only => [:index, :show, :create, :update, :destroy]
+  resources :study_types
+  resources :tags
 end

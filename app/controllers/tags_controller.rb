@@ -1,21 +1,25 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :update, :destroy]
+  before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   # GET /tags
   # GET /tags.json
   def index
     #@tags = Tag.all
     @tags = Tag.where(deleted_at: nil).page(params[:page]).per(7)
-    if params[:id].present?
-      set_tag
-    else
-      @tag = Tag.new
-    end
   end
 
   # GET /tags/1
   # GET /tags/1.json
   def show
+  end
+
+  # GET /study_books/new
+  def new
+    @tag = Tag.new
+  end
+
+  # GET /study_books/1/edit
+  def edit
   end
 
   # POST /tags
@@ -25,7 +29,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to tags_path, notice: '学習タイプの新規登録が完了した。' }
+        format.html { redirect_to @tag, notice: 'タグの新規登録が完了した。' }
         format.json { render :show, status: :created, location: @tag }
       else
         @tags = Tag.where(deleted_at: nil).page(params[:page]).per(7)
@@ -40,8 +44,8 @@ class TagsController < ApplicationController
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to tags_path, notice: '学習タイプの更新が完了した。' }
-        format.json { render :show, status: :ok, location: @tag }
+        format.html { redirect_to @tag, notice: 'タグの新更新が完了した。' }
+        format.json { render :show, status: :created, location: @tag }
       else
         format.html { render :index }
         format.json { render json: @tag.errors, status: :unprocessable_entity }

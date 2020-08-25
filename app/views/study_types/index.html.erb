@@ -18,7 +18,7 @@
         <td><%= study_type.remark %></td>
         <td>
           <%= link_to '詳細', study_type, { class: "btn btn-primary" } %>
-          <%= link_to '編集', study_types_path(id: study_type.id), { class: "btn btn-success" } %>
+          <%= link_to '編集', edit_study_type_path(study_type), { class: "btn btn-success" } %>
           <%= link_to '削除', study_type, method: :delete, data: { confirm: '削除しても大丈夫ですか?' }, class: "btn btn-danger" %>
         </td>
       </tr>
@@ -28,12 +28,4 @@
 
 <%= paginate @study_types %>
 
-<hr class="fluid-box formLine">
-
-<div class="formBox">
-  <h3 class="formTitle">
-    <%= @study_type.id == nil ? "新規登録フォーム" : "更新フォーム" %>
-  </h3>
-
-  <%= render 'form', study_type: @study_type %>
-</div>
+<%= link_to '学習タイプ追加', new_study_type_path, { class: "btn btn-primary" } %>
