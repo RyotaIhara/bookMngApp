@@ -28,7 +28,8 @@ class TagsController < ApplicationController
         format.html { redirect_to tags_path, notice: '学習タイプの新規登録が完了した。' }
         format.json { render :show, status: :created, location: @tag }
       else
-        format.html { render :new }
+        @tags = Tag.where(deleted_at: nil).page(params[:page]).per(7)
+        format.html { render :index }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +43,7 @@ class TagsController < ApplicationController
         format.html { redirect_to tags_path, notice: '学習タイプの更新が完了した。' }
         format.json { render :show, status: :ok, location: @tag }
       else
-        format.html { render :edit }
+        format.html { render :index }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
       end
     end

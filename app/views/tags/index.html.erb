@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>タグ名</th>
-      <th>備考</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
     <% @tags.each do |tag| %>
       <tr>
         <td><%= tag.tag_name %></td>
-        <td><%= tag.remark %></td>
         <td>
           <%= link_to '詳細', tag, { class: "btn btn-primary" } %>
           <%= link_to '編集', tags_path(id: tag.id), { class: "btn btn-success" } %>

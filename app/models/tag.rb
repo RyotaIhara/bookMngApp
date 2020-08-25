@@ -12,4 +12,6 @@
 class Tag < ApplicationRecord
   has_many :study_book_tag_relations
   has_many :study_books, through: :study_book_tag_relations
+
+  validates :tag_name, presence: true, length: { maximum: 50 } 
 end
