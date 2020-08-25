@@ -32,8 +32,7 @@ class TagsController < ApplicationController
         format.html { redirect_to @tag, notice: 'タグの新規登録が完了した。' }
         format.json { render :show, status: :created, location: @tag }
       else
-        @tags = Tag.where(deleted_at: nil).page(params[:page]).per(7)
-        format.html { render :index }
+        format.html { render :new }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +46,7 @@ class TagsController < ApplicationController
         format.html { redirect_to @tag, notice: 'タグの新更新が完了した。' }
         format.json { render :show, status: :created, location: @tag }
       else
-        format.html { render :index }
+        format.html { render :edit }
         format.json { render json: @tag.errors, status: :unprocessable_entity }
       end
     end
@@ -56,10 +55,9 @@ class TagsController < ApplicationController
   # DELETE /tags/1
   # DELETE /tags/1.json
   def destroy
-
     @tag.deleted_at = Date.today.to_time
     respond_to do |format|
-      if @tag.save
+      if @tag.save(validate: false)
         StudyBookTagRelation.where(tag_id: @tag.id).destroy_all
         format.html { redirect_to tags_url, notice: '学習タイプの削除が完了した。' }
         format.json { head :no_content }

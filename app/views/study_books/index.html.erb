@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Study Books</h1>
+<h1>参考書一覧</h1>
 
 <div class="text-right">
   <%= form_tag study_books_path, method: :get, class: 'books_searchForm' do %>
@@ -49,4 +49,4 @@
 
 <br>
 
-<%= link_to '新規登録へ', new_study_book_path, { class: "btn btn-primary" } %>
+<%= link_to '参考書追加', new_study_book_path, { class: "btn btn-primary" } %>

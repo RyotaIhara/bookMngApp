@@ -16,17 +16,21 @@ class UsersController < ApplicationController
     end
   end
 
+  # ユーザー名編集
   def edit_name
     @user.user_name = ''
   end
 
+  # パスワード編集
   def edit_password
   end
 
+  # パスワードを忘れた場合のユーザー確認
   def confirm_name
     @user = User.new
   end
 
+  # ユーザー名確認後、パスワードリセット画面に遷移（パスワードを忘れた場合）
   def edit_password_from_confirm_name
     @user = User.find_by(user_name: user_name_param, deleted_at: nil)
     if @user.present?

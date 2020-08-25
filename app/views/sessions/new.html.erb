@@ -6,6 +6,16 @@
 
   <div class="form-wrapper">
     <h1>Sign In</h1>
+    <% if @errors.present? %>
+      <div class="alert alert-danger">
+        <ul class="list-unstyled">
+          <% @errors.each do |e| %>
+            <li><%= e %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <%= form_with(model: @user, local: true) do |form| %>
       <div class="form-item">
         <label for="ユーザー名"></label>

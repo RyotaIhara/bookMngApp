@@ -5,8 +5,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>タイプ名</th>
-      <th>備考</th>
+      <th>学習タイプ名</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
     <% @study_types.each do |study_type| %>
       <tr>
         <td><%= study_type.type_name %></td>
-        <td><%= study_type.remark %></td>
         <td>
           <%= link_to '詳細', study_type, { class: "btn btn-primary" } %>
           <%= link_to '編集', edit_study_type_path(study_type), { class: "btn btn-success" } %>

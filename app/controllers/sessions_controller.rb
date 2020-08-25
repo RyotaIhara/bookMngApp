@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       sign_in(@user)
       redirect_to root_path
     else
-      flash.now[:danger] = t('.flash.invalid_password')
+      @errors = ['ユーザー名及びパスワードが間違っている可能性があります。']
       render 'new'
     end
   end
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     def set_user
       @user = User.find_by!(user_name: params[:user_name])
     rescue
-      flash.now[:danger] = t('.flash.invalid_user_name')
+      @errors = ['ユーザー名が存在しません。']
       render action: 'new'
     end
 

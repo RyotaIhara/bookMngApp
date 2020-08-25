@@ -1,8 +1,32 @@
 ja:
   views:
-      pagination:
-        first: '最初'
-        last: '最後'
-        previous: '前'
-        next: '次'
-        truncate: '...'
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
+
+  activerecord:
+    models:
+      user: ユーザー
+      study_type: 学習タイプ
+      tag: タグ
+      study_book: 参考書
+    attributes:
+      user:
+        user_name: ユーザー名
+        password: パスワード
+      study_type:
+        type_name: 学習タイプ名
+        remark: 備考
+      tag:
+        tag_name: タグ名
+        remark: 備考
+      study_book:
+        book_name: 書籍名
+        author: 作者
+        publisher: 出版社
+        price: 価格
+        remark: 備考
+

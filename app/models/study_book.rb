@@ -31,4 +31,19 @@ class StudyBook < ApplicationRecord
   has_many :study_book_tag_relations
   has_many :tags, through: :study_book_tag_relations
   accepts_nested_attributes_for :tags, reject_if: :all_blank, allow_destroy: true
+
+  validates :book_name, presence: true, length: { maximum: 30 }
+  validates :author, length: { maximum: 30 }
+  validates :publisher, length: { maximum: 30 }
+  validates :price, length: { maximum: 9 }
+  validates :remark, length: { maximum: 200 }
+
+  validate :check_unique_book_name
+
+  def check_unique_book_name
+    @study_book = StudyBook.where(book_name: book_name, deleted_at: nil)
+    if @study_book.present?
+      errors.add(:book_name, "は既に登録されています。")
+    end
+  end
 end

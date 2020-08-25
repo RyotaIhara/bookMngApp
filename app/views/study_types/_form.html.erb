@@ -1,9 +1,7 @@
 <%= form_with(model: study_type, local: true) do |form| %>
   <% if study_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(study_type.errors.count, "error") %> prohibited this study_type from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger">
+      <ul class="list-unstyled">
         <% study_type.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -12,7 +10,7 @@
   <% end %>
 
   <div class="form-group row">
-    <%= form.label :タイプ名, class: "col-sm-2 col-form-label" %>
+    <%= form.label :学習タイプ名, class: "col-sm-2 col-form-label" %>
     <div class="col-sm-10">
       <%= form.text_field :type_name, class: 'form-control' %>
     </div>
