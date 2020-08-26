@@ -27,7 +27,7 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/
   validates :password, presence: true, length: { minimum: 6, maximum: 30 },
               format: { with: VALID_PASSWORD_REGEX,
-              message: "は半角6文字以上の半角英数字"}
+              message: "は半角英数字で入力してください"}
 
   validate :check_unique_user_name
 

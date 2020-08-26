@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post 'user/confirm_name', to: 'users#edit_password_from_confirm_name'
 
   resources :users, :only => [:new, :create, :update, :destroy]
+  get 'users', to: 'users#new'
   resources :study_books
   resources :study_types
   resources :tags

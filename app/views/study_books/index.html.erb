@@ -2,7 +2,7 @@
 
 <h1>参考書一覧</h1>
 
-<div class="text-right">
+<div class="text-right margin-bottom-10">
   <%= form_tag study_books_path, method: :get, class: 'books_searchForm' do %>
     <%= select_tag :tag_id,
                     options_from_collection_for_select(Tag.where(deleted_at: nil), :id, :tag_name, params[:tag_id]),
