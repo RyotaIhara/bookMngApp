@@ -4,6 +4,10 @@ class SessionsController < ApplicationController
   before_action :set_user, only: [:create]
 
   def new
+    # ログイン失敗時のエラー文を渡す
+    if params[:errors].present?
+      @errors = params[:errors]
+    end
   end
 
   def create
@@ -12,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       @errors = ['ユーザー名及びパスワードが間違っている可能性があります。']
-      render 'new'
+      redirect_to login_path(errors: @errors)
     end
   end
 

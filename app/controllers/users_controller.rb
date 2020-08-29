@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_sign_in!, 
-    only: [:new, :create,:confirm_name, :edit_password_from_confirm_name, :edit_password]
+    only: [:new, :create,:confirm_name, :edit_password_from_confirm_name, :edit_password, :update]
   before_action :set_user, only: [:edit_name, :edit_password, :update, :destroy]
 
   def new
@@ -42,15 +42,20 @@ class UsersController < ApplicationController
   end
 
   def update
+    puts "メソッドが動いた"
     if params[:target_column] == 'user_name'
+      # ユーザーネーム編集の際はログインの必要がある
+      require_sign_in!
       @user.user_name = user_params["user_name"]
     elsif params[:target_column] == 'password'
       @user.password = user_params["password"]
       @user.password_confirmation = user_params["password_confirmation"]
     end
 
-    if @user.save
-      redirect_to root_path
+    # 実行するバリデーションを条件に応じて変更する
+    if params[:target_column] == 'user_name' ? 
+      @user.save(context: :user_name_valid) : @user.save(context: :password_valid)
+        redirect_to root_path
     else
       if params[:target_column] == 'user_name'
         render 'edit_name'

@@ -41,7 +41,7 @@ class StudyBook < ApplicationRecord
   validate :check_unique_book_name, on: :create
 
   def check_unique_book_name
-    @study_book = StudyBook.where(book_name: book_name, deleted_at: nil)
+    @study_book = StudyBook.where(book_name: book_name, user_id: user_id, deleted_at: nil)
     if @study_book.present?
       errors.add(:book_name, "は既に登録されています。")
     end

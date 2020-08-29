@@ -4,17 +4,18 @@
 
 <div class="form-wrapper">
   <h1>ユーザー名変更</h1>
-  <% if @errors.present? %>
-    <div class="alert alert-danger">
-      <ul class="list-unstyled">
-        <% @errors.each do |e| %>
-          <li><%= e %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <%= form_with(model: @user, local: true) do |form| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <ul class="list-unstyled">
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <!-- 更新対象のカラム -->
     <%= hidden_field_tag :target_column, 'user_name' %>
 
@@ -31,6 +32,6 @@
     </div>
   <% end %>
   <div class="form-footer">
-    <p><%= link_to 'ホームへ', login_path %></p>
+    <p><%= link_to 'ホームへ', root_path %></p>
   </div>
 </div>

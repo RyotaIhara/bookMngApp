@@ -17,6 +17,7 @@ ja:
       user:
         user_name: ユーザー名
         password: パスワード
+        password_confirmation: パスワード確認
       study_type:
         type_name: 学習タイプ名
         remark: 備考

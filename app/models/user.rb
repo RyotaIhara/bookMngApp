@@ -23,13 +23,14 @@ class User < ApplicationRecord
     Digest::SHA256.hexdigest(token.to_s)
   end
 
-  validates :user_name, presence: true, length: { maximum: 30 }
+  validates :user_name, presence: true, length: { maximum: 30 }, on: :user_name_valid
   VALID_PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/
   validates :password, presence: true, length: { minimum: 6, maximum: 30 },
               format: { with: VALID_PASSWORD_REGEX,
-              message: "は半角英数字で入力してください"}
+              message: "は半角英数字で入力してください"},
+              on: :password_valid
 
-  validate :check_unique_user_name
+  validate :check_unique_user_name, on: :user_name_valid
 
   def check_unique_user_name
     @user = User.where(user_name: user_name, deleted_at: nil)
