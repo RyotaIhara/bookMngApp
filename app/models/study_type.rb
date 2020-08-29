@@ -15,7 +15,7 @@ class StudyType < ApplicationRecord
   validates :type_name, presence: true, length: { maximum: 30 }
   validates :remark, length: { maximum: 200 }
 
-  validate :check_unique_type_name
+  validate :check_unique_type_name, on: :create
 
   def check_unique_type_name
     @study_type = StudyType.where(type_name: type_name, deleted_at: nil)

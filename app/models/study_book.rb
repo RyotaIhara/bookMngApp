@@ -38,7 +38,7 @@ class StudyBook < ApplicationRecord
   validates :price, length: { maximum: 9 }
   validates :remark, length: { maximum: 200 }
 
-  validate :check_unique_book_name
+  validate :check_unique_book_name, on: :create
 
   def check_unique_book_name
     @study_book = StudyBook.where(book_name: book_name, deleted_at: nil)

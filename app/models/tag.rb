@@ -16,7 +16,7 @@ class Tag < ApplicationRecord
   validates :tag_name, presence: true, length: { maximum: 30 } 
   validates :remark, length: { maximum: 200 } 
 
-  validate :check_unique_tag_name
+  validate :check_unique_tag_name, on: :create
 
   def check_unique_tag_name
     @tag = Tag.where(tag_name: tag_name, deleted_at: nil)
