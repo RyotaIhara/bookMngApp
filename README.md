@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+アプリケーションURL:https://bookmngapp.herokuapp.com/
 
-Things you may want to cover:
+本アプリケーションの用途：
+プログラミング等の参考書をType（書籍、udemyなど）ごとに管理する。
+それぞれの書籍にtagをつけて、検索を容易にする。
 
-* Ruby version
+rubyバージョン：2.7.1
 
-* System dependencies
+raisバージョン：6.0.3
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+インフラ：herokuにて運用
