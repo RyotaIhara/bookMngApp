@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    puts "メソッドが動いた2"
+    if @user.save(context: [:user_name_valid, :password_valid])
       redirect_to login_path
     else
       render 'new'
