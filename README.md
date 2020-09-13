@@ -1,6 +1,9 @@
 # README
 
 アプリケーションURL:https://bookmngapp.herokuapp.com/
+下記の情報でログインできます
+ユーザー名：テストユーザー
+パスワード：testuser01
 
 本アプリケーションの用途：
 プログラミング等の参考書をType（書籍、udemyなど）ごとに管理する。
