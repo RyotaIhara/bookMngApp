@@ -2,7 +2,8 @@
 
 アプリケーションURL:https://bookmngapp.herokuapp.com/
 
-下記の情報でログインできます
+下記の情報でログインできます。
+
 ユーザー名：テストユーザー
 パスワード：testuser01
 
